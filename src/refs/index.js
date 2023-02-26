@@ -1,4 +1,5 @@
 const formEl = document.querySelector(".search-form");
-const galleryEl = document.querySelector(".gallery")
+const galleryEl = document.querySelector(".gallery");
+const loadMoreBtn = document.querySelector(".load-more")
 
-export { formEl, galleryEl };
+export { formEl, galleryEl, loadMoreBtn };

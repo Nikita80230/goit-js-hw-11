@@ -1,4 +1,8 @@
 export function addMarkup(markup, elem) {
-    elem.innerHTML = markup;
-  }
+  elem.insertAdjacentHTML("beforeend", markup)
+}
   
+export function clearMarkup(markup, elem) {
+  elem.innerHTML = ""
+  
+}

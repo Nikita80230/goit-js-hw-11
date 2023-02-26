@@ -8,7 +8,7 @@ export function createGalleryItem(items = []) {
         comments,
         downloads}) => {
         return `<div class="photo-card">
-        <a href="${largeImageURL}"  width="800px">
+        <a href=${largeImageURL}>
             <img src="${webformatURL}" alt="${tag}" loading="lazy" width="400px" height="300px"/>
         </a>
         <div class="info">
@@ -30,6 +30,8 @@ export function createGalleryItem(items = []) {
       </div>`
     }).join("")
 }
+
+
 
 // webformatURLTimeRanges,
 // largeImageURLTimeRanges,
