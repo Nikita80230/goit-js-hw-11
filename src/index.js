@@ -23,15 +23,21 @@ let totalQuantityOfPage;
 
 function onSubmit(event) {
     event.preventDefault();
-
-    inputValue = event.target[0].value.trim();
     
     clearMarkup("", galleryEl);
+    
+    inputValue = event.target.elements.searchQuery.value.trim();
+
+    if(!inputValue){
+        Notify.failure("Sorry, there are no images matching your search query. Please try again.");
+        return;
+    }
     
     getData(inputValue).then(({data}) => {
        
         const {hits, totalHits} = data
         totalQuantityOfPage = Math.ceil(totalHits / 40);
+        
 
         if(totalHits > 0) {
             loadMoreBtn.classList.remove('is-hidden');
@@ -67,7 +73,6 @@ function onLoadMoreBtn(event) {
         addMarkup(cardsMarkup, galleryEl)
 
         lightbox.refresh();
-        
         if(totalQuantityOfPage === currentPage) {
             Notify.warning("We're sorry, but you've reached the end of search results.");
             loadMoreBtn.classList.add('is-hidden')
