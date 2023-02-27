@@ -37,7 +37,7 @@ function onSubmit(event) {
             loadMoreBtn.classList.remove('is-hidden');
         }
         
-        if(totalHits <= 0) {
+        if(totalHits <= 40) {
             loadMoreBtn.classList.add('is-hidden')
             Notify.failure("Sorry, there are no images matching your search query. Please try again.");
         }
@@ -59,12 +59,15 @@ function onLoadMoreBtn(event) {
     currentPage += 1;
     
     getData(inputValue, currentPage).then(({data}) => {
-        console.log(response)
+        
         const {hits} = data;
         
         const cardsMarkup = createGalleryItem(hits);
+
         addMarkup(cardsMarkup, galleryEl)
+
         lightbox.refresh();
+        
         if(totalQuantityOfPage === currentPage) {
             Notify.warning("We're sorry, but you've reached the end of search results.");
             loadMoreBtn.classList.add('is-hidden')
